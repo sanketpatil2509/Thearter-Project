@@ -1,0 +1,108 @@
+import tkinter as tk
+from tkinter import ttk
+from PIL import Image,ImageTk
+
+def ticket_fixed():
+    print(f"Enter Name:{name_var.get()}")
+    print(f"Number of tickets:{number_var.get()}")
+    print(f"Film Name:{film_var.get()}")
+    print(f"Contact:{contact_var.get()}")
+    print(f"Show Time:{time_var.get()}")
+def click_me():
+    print(f"Gender:-{click_option.get()}")
+def position_set():
+    print(f"Seat Position:-{seating_potion.get()}")
+
+
+root=tk.Tk()
+style=ttk.Style()
+root.configure(background="aqua")
+root.geometry("600x350")
+root.resizable(False,False)
+root.title("Film Tkiket")
+theater=ttk.Label(root,text="Dhruv Theater")
+heading=ttk.Label(root,text="Get tickets today before it's too late!")
+heading.grid(row=2,column=1)
+theater.grid(row=1,column=1,padx=10,pady=10)
+name_var=tk.StringVar()
+name=ttk.Label(root,text="Enter Name:-")
+entry=ttk.Entry(root,textvariable=name_var,width=20)
+name.grid(row=3,column=0,padx=10,pady=10)
+entry.grid(row=3,column=1)
+number_var=tk.IntVar()
+number=ttk.Label(root,text="Number of tickets:-")
+count=ttk.Entry(root,textvariable=number_var)
+number.grid(row=3,column=2)
+count.grid(row=3,column=3)
+click_option=tk.StringVar()
+gender=ttk.Label(root,text="Select Gender:-")
+gender.grid(row=6,column=0)
+click_one=ttk.Radiobutton(
+    root,
+    text="Male",
+    variable=click_option,
+    command=click_me,
+    value="Male"
+)
+click_one.grid(row=6,column=1)
+
+click_two=ttk.Radiobutton(
+    root,
+    text="Female",
+    variable=click_option,
+    command=click_me,
+    value="Female"
+)
+click_two.grid(row=7,column=1)
+film_var=tk.StringVar()
+film_name=ttk.Label(root,text="Film Name:-")
+entry1=ttk.Entry(root,textvariable=film_var)
+film_name.grid(row=4,column=0,pady=10,padx=10)
+entry1.grid(row=4,column=1)
+contact_var=tk.IntVar()
+contact=ttk.Label(root,text="Phone Number:-")
+cont=ttk.Entry(root,textvariable=contact_var)
+contact.grid(row=4,column=2)
+cont.grid(row=4,column=3)
+date_var=tk.StringVar()
+date=ttk.Label(root,text="Date:-")
+entry2=ttk.Entry(root,textvariable=date_var)
+date.grid(row=5,column=2)
+entry2.grid(row=5,column=3)
+time_var=tk.StringVar()
+shift=ttk.Label(root,text="Show Time:-")
+timing=ttk.Combobox(root,textvariable=time_var)
+timing["values"]=["9AM To 12PM","3PM To 6PM","9PM to 12 AM"]
+shift.grid(row=5,column=0)
+timing.grid(row=5,column=1)
+seating_potion=tk.StringVar()
+seat=ttk.Label(root,text="Seating Position:-")
+seat.grid(row=8,column=0)
+Front=ttk.Radiobutton(
+    root,
+    text="Fornt",
+    variable=seating_potion,
+    command=position_set,
+    value="Fornt"
+)
+Front.grid(row=8,column=1)
+
+Middel=ttk.Radiobutton(
+    root,
+    text="Middel",
+    variable=seating_potion,
+    command=position_set,
+    value="Middel"
+)
+Middel.grid(row=9,column=1)
+Balcony=ttk.Radiobutton(
+    root,
+    text="Balcony",
+    variable=seating_potion,
+    command=position_set,
+    value="Balcony"
+)
+Balcony.grid(row=10,column=1)
+button=ttk.Button(root,text="Save",command=ticket_fixed)
+button.grid(row=11,column=3)
+root.mainloop()
